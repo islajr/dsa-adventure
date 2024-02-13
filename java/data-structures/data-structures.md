@@ -22,3 +22,6 @@ Linear data structures are of two types:
 
 This data structure does not arrange elements sequentially. As a result, all the elements in the data structure cannot be accessed in a single run, like the linear data structure.
 Examples are: trees and graphs.
+
+#### Arrays in Java
+
