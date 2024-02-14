@@ -19,7 +19,7 @@ public class access {
         students[4] = new Student(5, "Timileyin");
 
         for (Student student : students) {
-            System.out.println(student.number);
+            System.out.println(student.number + ". " + student.name);
         }
     }
 }
