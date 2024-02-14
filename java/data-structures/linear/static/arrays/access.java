@@ -7,8 +7,8 @@ class Student {
         this.name = name;
     }
 }
-
 public class access {
+
     public static void main(String[] args) {
         Student[] students = new Student[5];
 
