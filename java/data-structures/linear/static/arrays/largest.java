@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class largest {
@@ -14,10 +15,10 @@ public class largest {
         }
         scanner.close();    // close scanner to free up memory
 
-       int largest = 0;
+       int largest = myArray[0];
        int two = 0;
        int three = 0;
-       for (int i : myArray) {
+       /* for (int i : myArray) {
             if (i > largest) {
                 largest = i;
             }
@@ -33,10 +34,13 @@ public class largest {
         if (i < largest && i < two && i > three) {
             three = i;
         }
-       }
+       } */
 
-       System.out.println("The largest number in this array is: " + largest);
-       System.out.println("The second largest number is: " + two);
-       System.out.println("The third largest number is: " + three);
+       // easier method
+       Arrays.sort(myArray);
+
+       System.out.println("The largest number in this array is: " + myArray[4]);
+       System.out.println("The second largest number is: " + myArray[3]);
+       System.out.println("The third largest number is: " + myArray[2]);
     }
 }
