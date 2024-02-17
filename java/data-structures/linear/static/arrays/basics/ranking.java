@@ -7,13 +7,13 @@ public class ranking {
         Scanner scanner = new Scanner(System.in);
         
         int length;
-        System.out.println("How many elements do you want in your array?");
-        length = scanner.nextInt();
+        System.out.print("How many elements do you want in your array? ");
+        length = scanner.nextInt() - 1;
 
         int sub;
 
         for (int i = 0; i <= length; ++i) {
-            System.out.println("Array Element " + (i + 1));
+            System.out.print("Array Element " + (i + 1) + ": ");
             sub = scanner.nextInt();
 
             if (i + 1 == 1) {   // if it is the first element of the array
@@ -23,11 +23,10 @@ public class ranking {
 
                 for (int j = 0; j <= i; ++j) {
                     if (sub < myArray[j]) {
-                        myArray[i] = myArray[j];
-                        myArray[j] = sub;
+                       adjust(myArray, sub, i, j);
                     }
                     else {
-                        myArray[j] = sub;
+                        continue;
                     }
                 }
             }
@@ -42,5 +41,16 @@ public class ranking {
         }
 
 
+    }
+
+    public static int [] adjust(int[] array, int value, int current, int index) {
+
+        for (int i = current; i >= 0; --i) {
+            if (i == index)
+                array[i + 1] = array[i];
+            else
+                array[i] = value;
+        }
+        return array;
     }
 }
