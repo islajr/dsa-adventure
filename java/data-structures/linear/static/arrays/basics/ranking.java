@@ -14,24 +14,11 @@ public class ranking {
 
         for (int i = 0; i <= length; ++i) {
             System.out.print("Array Element " + (i + 1) + ": ");
-            sub = scanner.nextInt();
-
-            if (i + 1 == 1) {   // if it is the first element of the array
-                myArray[0] = sub;
-            }
-            else {
-
-                for (int j = 0; j <= i; ++j) {
-                    if (sub < myArray[j]) {
-                       adjust(myArray, sub, i, j);
-                    }
-                    else {
-                        continue;
-                    }
-                }
-            }
+            myArray[i] = scanner.nextInt();
 
         }
+
+        sort(myArray, myArray.length);
 
         scanner.close();
 
@@ -43,14 +30,18 @@ public class ranking {
 
     }
 
-    public static int [] adjust(int[] array, int value, int current, int index) {
-
-        for (int i = current; i >= 0; --i) {
-            if (i == index)
-                array[i + 1] = array[i];
-            else
-                array[i] = value;
+    public static int [] sort(int[] array, int length) {
+        int current;
+        for (int i = 0; i <= length; ++i) {
+            for (int j = 0; j <= length; ++j) {
+                if (array[j] < array[i]) {
+                    current = array[i];
+                    array[i] = array[j];
+                    array[j] = current;
+                }
+            }
         }
+        
         return array;
     }
 }
