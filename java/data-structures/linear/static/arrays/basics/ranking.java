@@ -32,8 +32,8 @@ public class ranking {
 
     public static int [] sort(int[] array, int length) {
         int current;
-        for (int i = 0; i <= length; ++i) {
-            for (int j = 0; j <= length; ++j) {
+        for (int i = 0; i < length; ++i) {
+            for (int j = i + i; j < length; ++j) {
                 if (array[j] < array[i]) {
                     current = array[i];
                     array[i] = array[j];
