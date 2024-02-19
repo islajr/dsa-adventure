@@ -18,7 +18,7 @@ public class ranking {
 
         }
 
-        sort(myArray, myArray.length);
+        sort(myArray);
 
         scanner.close();
 
@@ -30,10 +30,10 @@ public class ranking {
 
     }
 
-    public static int [] sort(int[] array, int length) {
+    public static int [] sort(int[] array) {
         int current;
-        for (int i = 0; i < length; ++i) {
-            for (int j = i + i; j < length; ++j) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + i; j < array.length; j++) {
                 if (array[j] < array[i]) {
                     current = array[i];
                     array[i] = array[j];
