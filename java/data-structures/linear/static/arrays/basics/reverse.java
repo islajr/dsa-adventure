@@ -11,12 +11,12 @@ public class reverse {
             newArray[(myArray.length - 1) - i] = myArray[i];
         }
 
-        System.out.print("The original array is:");
+        System.out.print("Original:");
         for (int i : myArray) {
             System.out.print(" " + i);
         }
 
-        System.out.print("\nThe new array is:");
+        System.out.print("\nReversed:");
         for (int i : newArray) {
             System.out.print(" " + i);
         }
