@@ -4,7 +4,7 @@ public class unsorted {
 
         int[] unsorted = {2, 1, 4, 6, 3};
 
-        int[] newArray = insert(unsorted, 5);
+        int[] newArray = delete(unsorted, 6);
 
         for (int i : newArray) {
             System.out.println(i);
@@ -44,7 +44,29 @@ public class unsorted {
                 newArray[i] = array[i];
             }
         }
+
+        return newArray;
+    }
+
+    // function for deletion...
+    public static int[] delete(int[] array, int element) {
+        int[] newArray = new int[array.length - 1];
         
+        for (int i = 0; i < array.length; ++i) {
+            if (array[i] == element) {
+                for (int j = i; j < array.length - 1; ++j) {
+                    newArray[j] = array[j + 1];
+                }
+                break;
+            }
+            else {
+                newArray[i] = array[i];
+            }
+        }
+
+        if (newArray.equals(array)) {
+            System.out.println("This value is not in the array!");
+        }
         return newArray;
     }
 }
