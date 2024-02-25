@@ -16,16 +16,6 @@ public class unsorted {
                 array[i] = scanner.nextInt();
             }
 
-            /* // printing out the array
-            System.out.print("Your array: {");
-            for (int i = 0; i < length; ++i) {
-                if (i == length - 1) {
-                    System.out.print(i + "}\n");
-                }
-                else {
-                    System.out.print(i + ", ");
-                }
-            } */
             arrayToStdout(array);
 
             // asking for the next step
@@ -46,13 +36,15 @@ public class unsorted {
                 case "i":
                     System.out.print("What number do you want to add to the array? ");
                     int insertAnswer = scanner.nextInt();
-                    insert(array, insertAnswer);
-                    break;
+                    int[] updatedArray = insert(array, insertAnswer);
+                    arrayToStdout(updatedArray);
+                    System.exit(0);
                 case "d":
                     System.out.print("What element don't you like? ");
                     int deleteAnswer = scanner.nextInt();
-                    delete(array, deleteAnswer);
-                    break;
+                    int[] deletedArray = delete(array, deleteAnswer);
+                    arrayToStdout(deletedArray);
+                    System.exit(0);;
                 default:
                     break;
             }
@@ -131,4 +123,5 @@ public class unsorted {
             }
         }
     }
+    // note for later, work on the other methods apart from quit and search.
 }
