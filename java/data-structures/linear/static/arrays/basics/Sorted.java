@@ -30,21 +30,19 @@ public class Sorted {
     public static int[] sort(int[] array, int value) {
         int[] sorted = new int[array.length];
         int current = 0;
-        Boolean check = false;
+        int counter = 0;
 
-        for (int i = array.length - 1; i >= 0; --i) {
-            for (int j = i; j > 0; --j) {
-                if (array[j] < array[j - 1]) {
-                    current = array[j];
-                    check = true;
+        while(counter <= array.length - 1) {
+            for (int i = 0; i < array.length - 1; ++i) {
+                if (array[i] < array[i + 1] && array[i] > current) {
+                    current = array[i];
+                    break;
                 }
             }
-            if (check == true) {
-                sorted[(array.length - 1) - i] = current;
-                check = false;
-            }
-            
+            sorted[counter] = current;
+            ++counter;
         }
+
         return sorted;
     }
 
