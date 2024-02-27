@@ -31,19 +31,22 @@ public class Sorted {
         int[] sorted = new int[array.length];
         int current = 0;
         int counter = 0;
-
-        while(counter <= array.length - 1) {
-            for (int i = 0; i < array.length - 1; ++i) {
-                if (array[i] < array[i + 1] && array[i] > current) {
+        int track = 0;
+        
+        // sorting using the selection sort algorithm
+        while (counter <= 4) {
+            
+            for (int i = counter; i < array.length - 1; ++i) {
+                if (array[i] < array[i + 1]) {
                     current = array[i];
-                    break;
+                    track = i;
                 }
             }
-            sorted[counter] = current;
+            array[track] = array[counter];
+            array[counter] = current;
             ++counter;
         }
-
-        return sorted;
+        return array;
     }
 
     public static void arrayToStdout(int[] array) {
