@@ -29,23 +29,21 @@ public class Sorted {
 
     public static int[] sort(int[] array, int value) {
         int[] sorted = new int[array.length];
-        int current = 0;
-        int counter = 0;
-        int track = 0;
         
         // sorting using the selection sort algorithm
-        while (counter <= 4) {
-            
-            for (int i = counter; i < array.length - 1; ++i) {
-                if (array[i] < array[i + 1]) {
+        int current;
+        for (int i = 0; i < array.length; ++i) {    // outer loop to traverse the array length
+            int j = i;
+            while (j < array.length) {      // inner loop to work the array internally
+                if (array[j] < array[i]) {
                     current = array[i];
-                    track = i;
+                    array[i] = array[j];
+                    array[j] = current;
                 }
+                ++j;
             }
-            array[track] = array[counter];
-            array[counter] = current;
-            ++counter;
         }
+
         return array;
     }
 
