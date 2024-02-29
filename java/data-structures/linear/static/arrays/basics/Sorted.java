@@ -28,7 +28,6 @@ public class Sorted {
     }
 
     public static int[] sort(int[] array, int value) {
-        int[] sorted = new int[array.length];
         
         // sorting using the selection sort algorithm
         int current;
