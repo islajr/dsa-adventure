@@ -85,12 +85,30 @@ public class Sorted {
             array[i] = scanner.nextInt();
         }
 
-        scanner.close();
-
         // sorting array in ascending order
         int[] sorted = sort(array, 1);
 
         arrayToStdout(sorted);
+
+        // remember to add search, insert and delete features.
+        System.out.println("What do you want to do? ");
+        System.out.print("(S)Search, (I)Insert, (D)Delete? ");
+
+        String response = scanner.next();
+        response = response.strip().toLowerCase();
+        
+        switch (response) {
+            case "s":
+                System.out.println("You have chosen to search for an element. ");
+                search(array, length);
+                break;
+
+            case "i":
+                System.out.println("What do you want to insert?");
+        
+            default:
+                break;
+        }
 
 
     }
