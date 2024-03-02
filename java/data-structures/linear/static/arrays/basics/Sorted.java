@@ -27,6 +27,25 @@ public class Sorted {
         }
     }
 
+    public static int[] insert(int[] oldArray, int value) {
+        int[] newArray = new int[oldArray.length + 1];
+
+        for (int i = 0; i < oldArray.length; ++i) {
+            if (value > oldArray[i]) {
+                newArray[i] = oldArray[i];
+            }
+            else {
+                newArray[i] = value;
+                for (int j = i + 1; j <= oldArray.length; ++j) {
+                    newArray[j] = oldArray[j-1];
+                }
+                break;
+            }
+        }
+
+        return newArray;
+    }
+
     public static int[] sort(int[] array, int value) {
         
         // sorting using the selection sort algorithm
@@ -106,7 +125,11 @@ public class Sorted {
                 break;
 
             case "i":
-                System.out.println("What do you want to add?");
+                System.out.print("What do you want to add? ");
+                int insertValue = scanner.nextInt();
+                int[] insertedArray = insert(array, insertValue);
+                arrayToStdout(insertedArray);
+                break;
         
             default:
                 break;
