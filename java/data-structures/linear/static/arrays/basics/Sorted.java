@@ -100,11 +100,13 @@ public class Sorted {
         switch (response) {
             case "s":
                 System.out.println("You have chosen to search for an element. ");
-                search(array, length);
+                System.out.print("What are you looking for? ");
+                int searchValue = scanner.nextInt();
+                search(array, searchValue);
                 break;
 
             case "i":
-                System.out.println("What do you want to insert?");
+                System.out.println("What do you want to add?");
         
             default:
                 break;
