@@ -56,6 +56,24 @@ public class Sorted {
         return newArray;
     }
 
+    public static int[] delete(int[] array, int value) {
+        int[] newArray = new int[array.length - 1];
+
+        for (int i = 0; i < array.length; ++i) {
+            if (value == array[i]) {
+                for (int j = i + 1; j < array.length; ++j) {
+                    newArray[j - 1] = array[j]; 
+                }
+                break;
+            }
+            else {
+                newArray[i] = array[i];
+            }
+        }
+
+        return newArray;
+    }
+
     public static int[] sort(int[] array, int value) {
         
         // sorting using the selection sort algorithm
@@ -139,6 +157,13 @@ public class Sorted {
                 int insertValue = scanner.nextInt();
                 int[] insertedArray = insert(array, insertValue);
                 arrayToStdout(insertedArray);
+                break;
+            
+            case "d":
+                System.out.print("What do you want to delete? ");
+                int deleteValue = scanner.nextInt();
+                int[] deletedArray = delete(array, deleteValue);
+                arrayToStdout(deletedArray);
                 break;
         
             default:
