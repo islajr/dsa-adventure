@@ -29,18 +29,28 @@ public class Sorted {
 
     public static int[] insert(int[] oldArray, int value) {
         int[] newArray = new int[oldArray.length + 1];
+        boolean inserted = false;
 
         for (int i = 0; i < oldArray.length; ++i) {
             if (value > oldArray[i]) {
                 newArray[i] = oldArray[i];
             }
-            else {
+            else if (value < oldArray[i]){
                 newArray[i] = value;
-                for (int j = i + 1; j <= oldArray.length; ++j) {
+                for (int j = i + 1; j <= oldArray.length; ++j){
                     newArray[j] = oldArray[j-1];
                 }
+                inserted = true;
                 break;
             }
+            else if (i == oldArray.length){
+                newArray[i] = value;
+                break;
+            }
+        }
+
+        if (inserted == false) {
+            newArray[newArray.length - 1] = value;
         }
 
         return newArray;
