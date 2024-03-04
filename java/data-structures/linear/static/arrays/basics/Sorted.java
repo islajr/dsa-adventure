@@ -136,8 +136,8 @@ public class Sorted {
         int[] sorted = sort(array, 1);
 
         arrayToStdout(sorted);
-
-        // remember to add search, insert and delete features.
+        while (true) {
+             // remember to add search, insert and delete features.
         System.out.println("What do you want to do? ");
         System.out.print("(S)Search, (I)Insert, (D)Delete? ");
 
@@ -163,6 +163,7 @@ public class Sorted {
                 System.out.print("What do you want to delete? ");
                 int deleteValue = scanner.nextInt();
                 int[] deletedArray = delete(array, deleteValue);
+                System.out.println("You have successfully deleted " + deleteValue + ".");
                 arrayToStdout(deletedArray);
                 break;
         
@@ -170,6 +171,25 @@ public class Sorted {
                 break;
         }
 
+        System.out.print("Do you want to continue? (Y)Yes or (N)No");
+        String continueResponse = scanner.next();
+
+        continueResponse = continueResponse.strip().toLowerCase();
+
+        switch (continueResponse) {
+            case "y":
+                break;
+            
+            case "n":
+                System.out.println("Bye! ");
+                System.exit(0);;
+                break;
+            default:
+                break;
+                
+        }
+
+        }
 
     }
 }
