@@ -58,17 +58,25 @@ public class Sorted {
 
     public static int[] delete(int[] array, int value) {
         int[] newArray = new int[array.length - 1];
+        boolean deleted = false;
 
         for (int i = 0; i < array.length; ++i) {
             if (value == array[i]) {
                 for (int j = i + 1; j < array.length; ++j) {
                     newArray[j - 1] = array[j]; 
                 }
+                deleted = true;
                 break;
             }
             else {
                 newArray[i] = array[i];
             }
+        }
+
+        if (deleted == false) {
+            System.out.println("The element was not found! ");
+        }
+        else {
         }
 
         return newArray;
@@ -171,7 +179,7 @@ public class Sorted {
                 break;
         }
 
-        System.out.print("Do you want to continue? (Y)Yes or (N)No");
+        System.out.print("Do you want to continue? (Y)Yes or (N)No ");
         String continueResponse = scanner.next();
 
         continueResponse = continueResponse.strip().toLowerCase();
