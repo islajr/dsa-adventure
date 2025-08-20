@@ -1,10 +1,10 @@
 
 
-public class LinkedList {
+public class SingleLinkedList {
     private final Node head;
 
     /* constructor */
-    public LinkedList(Node head) {
+    public SingleLinkedList(Node head) {
         this.head = head;
     }
 
@@ -70,7 +70,7 @@ public class LinkedList {
             E.setNext(null); // Last node's next is null
 
             // finishing up the linked list
-            LinkedList list = new LinkedList(A);
+            SingleLinkedList list = new SingleLinkedList(A);
 
             System.out.println("""
                     single linked list:
