@@ -1,3 +1,6 @@
 # cpp output files
 *.out
 **/cpp/output
+
+# java output files
+*.class
