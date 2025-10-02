@@ -2,8 +2,13 @@
 using namespace std;
 
 /* *
-    * stacks are data structures that follow the Last-In-First-Out (LIFO) principle.
-    * this is especially useful in scenarios where one needs to undo something.
+* stacks are data structures that follow the Last-In-First-Out (LIFO) principle.
+* this means that both entry and exit use the same mode (from behind)
+* as such, the first element to enter the stack will be the last one to leave and vice-versa
+* 
+* stacks are especially useful in scenarios where one needs to undo something.
+*
+* a stack implementation will have a top, capacity and storage attribute as seen in the array stack method below:
 */
 
 class Stack {
