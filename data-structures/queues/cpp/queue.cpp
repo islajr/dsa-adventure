@@ -1,6 +1,14 @@
 #include <iostream>
 using namespace std;
 
+/* *
+* queues are data structures that follow the First-In-First-Out (FIFO) principle
+* this means that there is only one mode of entry (from behind) and exit (from the front)
+* invariably, the first element to enter the queue will be the first to leave, and so on.
+* 
+* a queue implementation will have a front, rear, storage and size attribute as seen below:
+*/
+
 class Queue {
     int capacity;
     int count;
@@ -24,6 +32,7 @@ class Queue {
             delete[] arr;
         }
 
+        // adding new elements to the queue
         void enqueue(int x) {
             if (isFull()) {
                 cout << "queue overflow!\n" << endl;
@@ -35,6 +44,7 @@ class Queue {
             count++;
         }
 
+        // removing elements from the queue
         void dequeue() {
             if (isEmpty()) {
                 cout << "queue underflow!\n" << endl;
@@ -45,6 +55,7 @@ class Queue {
             count--;
         }
 
+        // returning the front element in the queue
         int peek() {
             if (isEmpty()) {
                 cout << "queue is empty!\n" << endl;
@@ -54,14 +65,17 @@ class Queue {
             return arr[front];
         }
 
+        // returns the size of the queue
         int size() {
             return count;
         }
 
+        // checks if the queue is empty
         bool isEmpty() {
             return count == 0;
         }
 
+        // checks if the queue is full
         bool isFull() {
             return count == capacity;
         }
