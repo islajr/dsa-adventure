@@ -7,36 +7,34 @@
 */
 public class ValidPalindrome {
     public static boolean isPalindrome(String s) {
-        s = s.toLowerCase();
-        String fs = "";
 
-        // format string
-        for (int i = 0; i < s.length(); i++) {
-            if (Character.isLetterOrDigit(s.charAt(i)))
-                fs += s.charAt(i);
-        }
-
-        // quick check
-        // System.out.println(fs);
-        if (fs.length() == 0)
+        if (s.isEmpty())
             return true;
 
         // traversing the formatted string with two-pointer tech
         int left = 0;
-        int right = fs.length() - 1;
+        int right = s.length() - 1;
 
         while (left < right) {
-            if (fs.charAt(left) != fs.charAt(right))
-                return false;
+            char currLeft = s.charAt(left);
+            char currRight = s.charAt(right);
 
-            left++;
-            right--;
+            if (!Character.isLetterOrDigit(currLeft))
+                left++;
+            else if (!Character.isLetterOrDigit(currRight))
+                right--;
+            else {
+                if (Character.toLowerCase(currLeft) != Character.toLowerCase(currRight))
+                    return false;
+                left++;
+                right--;
+            }
         }
 
         return true;
     }
 
     public static void main(String[] args) {
-        System.out.println(isPalindrome(" "));
+        System.out.println(isPalindrome("A man, a plan, a canal: Panama"));
     }
 }
