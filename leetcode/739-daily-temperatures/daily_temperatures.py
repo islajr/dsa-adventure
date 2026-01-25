@@ -12,7 +12,7 @@ class Solution:
         stack = []  # temp, index
         
         for i, t in enumerate(temperatures):
-            while stack and t > stack[-1][1]:
+            while stack and t > stack[-1][0]:
                 top_temp, top_index = stack.pop()
                 result[top_index] = i - top_index
                 
