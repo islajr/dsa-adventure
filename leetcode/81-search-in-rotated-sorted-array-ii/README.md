@@ -1,7 +1,9 @@
 # LC 81: Search in Rotated Sorted Array II
 
-> **Description** [LC 81](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/)
+> **Description:** [LC 81](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/)
+>
 > **Difficulty:** Medium
+>
 > **Time Complexity:** O(n)
 
 ## Approach
