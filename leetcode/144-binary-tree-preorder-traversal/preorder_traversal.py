@@ -10,6 +10,8 @@ class TreeNode:
 
 """
 class Solution:
+    
+    # recursive solution
     def preorder_traversal(self, root: Optional[TreeNode]) -> list[int]:
         res = []
         
@@ -23,3 +25,16 @@ class Solution:
         
         preorder(root)
         return res
+    
+    # iterative solution
+    def preorder_traversal_iter(self, root: Optional[TreeNode]) -> List[int]:
+        curr, stack = root, []
+        res = []
+        
+        while curr or stack:
+            if curr:
+                res.append(curr.val)
+                stack.append(curr.right)
+                curr = curr.left
+            else:
+                curr = stack.pop()
