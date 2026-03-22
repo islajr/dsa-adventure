@@ -9,7 +9,24 @@ class TreeNode:
         self.right = right
 """
 class Solution:
-    def inorder_traversal(self, root: Optional[TreeNode]) -> List[int]:
+    
+    # iterative solution
+    def inorder_traversal_iter(self, root: Optional[TreeNode]) -> List[int]:
+        curr, stack = root, []
+        res = []
+
+        while curr or stack:
+            while curr:
+                stack.append(curr)
+                curr = curr.left
+            curr = stack.pop()
+            res.append(curr.val)
+            curr = curr.right
+        return res
+
+
+    # recursive solution
+    def inorder_traversal_recursive(self, root: Optional[TreeNode]) -> List[int]:
         res = []
         
         def inorder(node):
