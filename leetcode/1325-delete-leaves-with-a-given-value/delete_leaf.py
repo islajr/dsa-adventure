@@ -1,7 +1,7 @@
 # LC 1325: Delete Leaves with a Given Value
 
 class RemoveLeadNodes:
-    def remove_leaf_nodes:
+    def remove_leaf_nodes(self, root: Optional[TreeNode], target: int) -> Optional[TreeNode]:
         if not root:
             return None
         
