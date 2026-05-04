@@ -4,18 +4,35 @@
 >
 > **Difficulty:** Easy
 >
+
+
+## Approach
+
+A balanced binary tree is one where the left and right sub-trees of every node differ in height by no more than 1.
+
+### Brute-force 
+
+> **Time Complexity:** O(n^2)
+>
+> **Space Complexity:** O(log n) -- Best Case | O(n) -- Worst Case (Degenerate Tree)
+
+This approach is really simple. Given the definition of a balanced tree, we recursively check and compare the heights of the left and right subtrees if <= 1.
+
+That is two recursive stacks that gives this approach a quadratic time complexity. Too slow.
+
+### Recursive DFS
+
 > **Time Complexity:** O(n)
 >
 > **Space Complexity:** O(log n) -- Best Case | O(n) -- Worst Case (Degenerate Tree)
 
-## Approach
+This approach uses DFS to return `balanced` and `height` of a binary tree at once for every node.
 
-A balanced binary tree is one where the left and right sub-trees of every node differ in height by no more than 1
+For each node, these results are gotten recursively from left and right children.
 
-This approach uses DFS to return `isBalanced` and `height` of a binary tree at once for every node.
+This approach improves on the brute-force approach by only having one recursive pass for left and right sub-trees (two actually).
 
-For each node, results are gotten recursively from left and right children, and a node is balanced if the left and right sub-trees are balanced, and the height difference <= 1
+Computing `height` and `balanced` becomes a problem of operations and arithmetic as opposed to more recursive calls.
 
-The height of the current node is computed as: `1 + max(leftHeight, rightHeight)`
+One Recursive pass, same result.
 
-`dfs()` is then run on the root to reveal `isBalanced()` value.
