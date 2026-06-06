@@ -45,4 +45,40 @@ def generateParenthesis(self, n: int) -> List[str]:
 ```
 
 ---
+### [Backtracking]
+
+> **Time Complexity:**
+> **Space Complexity:**  
+
+The [[LC 22 - Generate Parenthesis#[Brute Force|previous]] approach generated parenthesis, only to discard them if they were invalid. This increases time complexity and latency and is largely inefficient. To this end, we shall explore **Backtracking** as a more efficient approach. 
+
+With this approach, we only generate valid parenthesis. We track `opened`, `closed`, and the target `n` counts of brackets and adjust accordingly. If `opened < n`, we create more opening brackets and recurse accordingly while making allowances for backtracking. We do the same for if `closed < opened`.
+
+We store the created paranthesis in a stack and only append to the resulting array when `opened == closed == n`.
+
+``` python
+def generateParenthesis(self, n: int) -> List[str]:
+	res = []
+	stack = []
+	
+	def backtrack(opened, closed):
+		if opened == closed == n:
+			res.append("".join(stack))
+			return
+		
+		if opened < n:
+			stack.append("(")
+			backtrack(opened + 1, closed)
+			stack.pop()
+		
+		if closed < opened:
+			stack.append(")")
+			backtrack(opened, closed + 1)
+			stack.pop()
+	
+	backtrack(0, 0)
+	return res
+```
+
+---
 *Tags: #dsa #leetcode #backtracking
