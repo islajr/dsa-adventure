@@ -46,4 +46,51 @@ class Solution:
 ```
 
 ---
+
+### [Backtracking — Pruning]
+
+> **Time Complexity:** 
+> **Space Complexity:**
+
+The previous approach explored many redundant branches, leading to an [exponential time complexity](https://en.wikipedia.org/wiki/Time_complexity). This approach makes two key optimizations that leads to a significant improvement in time complexity. First one is to sort the array in reverse order so as to fail fast. The second one is the most crucial, and it is to skip placing a matchstick on an empty side if we have tried another empty side because since they are all the same length, they are interchangable. 
+
+As for the algorithm, we improve on the previous solution by floor-dividing the sum of all matchstick lengths into four so as to find the length per side. After this, we sort the array in reverse.
+
+Since we only explore valid decision branches until the end, we need only check for the base case before terminating and returning true.
+
+While choosing whether and how to explore each branch, we only proceed if the branch is viable (i.e.: if the addition of the  next matchstick fits into the computed length-per-side variable). Once we confirm that, most of the solution flows the same way, with us confirming true if the recursive addition comes back as true and backtracking otherwise.
+
+The second optimization comes at the end of each loop iteration with a check of whether the just explored side is zero. If so, we terminate that branch entirely, thus saving time and resources, leading to a faster algorithm.
+
+``` python
+def makesquare(matchsticks: List[int]) -> bool:
+	if sum(matchticks)% 4 != 0
+		return False
+	
+	length = sum(matchsticks) // 4    # length of each side
+	sides = [0] * 4
+	matchsticks.sort(reverse=True)
+	
+	def dfs(i):
+		# base case
+		if i == len(matchsticks):
+			return True
+		
+		for side in len(sides):
+			if sides[side] + matchsticks[i] <= length:
+				sides[side] += matchsticks[i]
+				if dfs(i + 1):
+					return True
+				sides[side] -= matchsticks[i]
+				
+			if sides[side] == 0:
+				break;
+		return False
+	
+	dfs(0)
+
+```
+
+---
+
 *Tags: #dsa #leetcode #backtracking
