@@ -1,17 +1,44 @@
-# LC 128: Longest Consecutive Sequence
+# LC 128: [Longest Consecutive Sequence]
 
-> **Description:** [LC 128](https://leetcode.com/problems/longest-consecutive-sequence/)
->
-> **Difficulty:** Medium
->
-> **Time Complexity:** O(n)
->
-> **Space Complexity:** O(1)
+
+> **Date:** [2026-07-04]
+> **Description:** [LC 128](https://leetcode.com/problems/longest-consecutive-sequence/description/)
+> **Difficulty:** [Medium]
+> **Category:** [[dsa-concepts#[Arrays]]
 
 ## Approach
 
-Since the problem is to find the longest consecutive sequence in O(n) time, it makes sense to convert the list: `nums` into a hash set.
+### [Sorting]
 
-To find the beginning of a valid sequence and avoid double-counting, we only count where `num - 1` does not exist in the hash set. This is the beginning of the sequence.
+> **Time Complexity:** O(n log n)
+> **Space Complexity:**  O(1)
 
-Each iteration after that simply works on the premise of whether `num + sequence_length` exists in the set or not.
+This problem has to do with finding the longest consecutive sequence of numbers in a provided arrays. With this approach, we sort the array in ascending order first as long as the array has been confirmed not to be empty. Then we set a counter for iterating, for streaks, and to track the current number of the array, and as long as the counter is still within the bounds of the array, we continue. 
+
+First thing to look for is mismatches. This would suggest that the sequence has been broken and as such, we update our current index tracker to the current index of the array and then reset the streak.
+
+Duplicates are a reasonable edge case to handle, and we do that properly by creating a nested loop that increments the iterating counter whenever we find  a match. 
+
+Finally, the streak value and current indexes are updated and the result variable is also updated.
+
+``` python
+def lcs(nums: List[int]) -> int:
+	if not nums:
+		return 0
+	res, i = 0, 0
+	nums.sort()
+	curr, streak = nums[0], 0
+	while i < len(nums):
+		if curr != nums[i]:
+			curr = nums[i]
+			streak = 0
+		while i < len(nums) and nums[i] == curr:
+			i += 1
+		streak += 1
+		curr += 1
+		res = max(res, streak)
+	return res
+```
+
+---
+*Tags: #dsa #leetcode #arrays 
