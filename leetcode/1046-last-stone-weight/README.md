@@ -28,4 +28,34 @@ def last_stone_weight(stones: List[int]) -> int:
 ```
 
 ---
+
+## Approach
+### [Heap]
+
+> **Time Complexity:** O(n log n)
+> **Space Complexity:** O(n) 
+
+Given that we need to remove the **two heaviest stones**, this is a problem perfectly suited for a **max heap**. However, since most languges provide min heaps instead, a common trick is to use negative values and invert the logic, which makes the smallest value technically the largest.
+
+The process to solving this problem would involve converting all stones to negative values and building a heap. Then we repeatedly pop the two smallest (heaviest) stones and smash them together. If equal, they're both destroyed. Otherwise, the difference is added to the heap. 
+
+When either `1` or `0` stones remain, we return the remaining weight or 0 respectively.
+
+``` python
+def last_stone_weight(stones: List[int]) -> int:
+	stones = [-s for s in stones]
+	heapq.heapify(stones)
+	
+	while len(stones) > 1:
+		first = heapq.heappop(stones)
+		second = heapq.heappop(stones)
+		
+		if second > first:
+			heapq.heappush(stones, first - second)
+		
+		stones.append(0)
+		return abs(stones[0])
+```
+
+---
 *Tags: #dsa #leetcode #priority-queue
