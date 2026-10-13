@@ -2,16 +2,20 @@
 
 
 > **Date:** [2026-07-12]
+
 > **Description:** [LC 1046 ](https://leetcode.com/problems/last-stone-weight/description/)
+
 > **Difficulty:** [Easy]
+
 > **Category:** [[dsa-concepts#[Priority Queue|Priority Queue]]
 
 ## Approach
 
 ### [Sorting]
 
-> **Time Complexity:** O(n^2 log n)
-> **Space Complexity:**  O(1) or O(n) -- depending on the sorting algorithm
+> **Time Complexity:** $O(n^2 log n)$
+
+> **Space Complexity:**  $O(1) or O(n)$
 
 This problem involves smashing the given `stones` against each other from heaviest to lightest and keeping the difference. This approach should involve sorting the array in increasing order and then **popping** from one end twice to obtain the difference before inserting that into the array and sorting again. This is trivial
 
@@ -28,18 +32,21 @@ def last_stone_weight(stones: List[int]) -> int:
 ```
 
 ---
-
 ## Approach
 ### [Heap]
 
-> **Time Complexity:** O(n log n)
-> **Space Complexity:** O(n) 
+> **Time Complexity:** $O(n log n)$
+
+> **Space Complexity:** $O(n)$ 
 
 Given that we need to remove the **two heaviest stones**, this is a problem perfectly suited for a **max heap**. However, since most languges provide min heaps instead, a common trick is to use negative values and invert the logic, which makes the smallest value technically the largest.
 
 The process to solving this problem would involve converting all stones to negative values and building a heap. Then we repeatedly pop the two smallest (heaviest) stones and smash them together. If equal, they're both destroyed. Otherwise, the difference is added to the heap. 
 
 When either `1` or `0` stones remain, we return the remaining weight or 0 respectively.
+
+> [!NOTE]
+> The addition of the `0` to the queue ensures that at least one value is always present in the queue in the end -- even if it is `0`.
 
 ``` python
 def last_stone_weight(stones: List[int]) -> int:
@@ -53,9 +60,26 @@ def last_stone_weight(stones: List[int]) -> int:
 		if second > first:
 			heapq.heappush(stones, first - second)
 		
-		stones.append(0)
-		return abs(stones[0])
+	stones.append(0)
+	return abs(stones[0])
+```
+
+``` java
+public int lastStoneWeight(int[] stones) {
+	PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+	for (int s : stones) minHeap.offer(-s);
+	
+	while (minHeap.size() > 1) {
+		int first = minHeap.poll();
+		int second = minHeap.poll();
+		
+		if (second > first) minHeap.offer(second - first);
+	}
+	
+	minHeap.offer(0);
+	return Math.abs(minHeap.peek());
+}
 ```
 
 ---
-*Tags: #dsa #leetcode #priority-queue
+*Tags: #dsa #leetcode #priority-queue*
